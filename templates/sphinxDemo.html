@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+    <body>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+
+        <button id="speechMic">Click to Start</button>
+
+        <script>
+            $(document).ready(function () {
+                console.log("Ready to go!!")
+                $("#speechMic").click(function () {
+                    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+                    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+                    aContext = window.AudioContext || window.webkitAudioContext;
+                    var audioContext = new AudioContext();
+                    var context = new aContext();
+                    console.log("ssssssssssssssssssssssssssssssssssss")
+                    console.log(context.sampleRate);
+                    var wsClient = new WebSocket("ws://localhost:9000");
+
+                    navigator.getUserMedia({audio: true}, function (stream) {
+                        var input = audioContext.createMediaStreamSource(stream);
+                        var recordNode = audioContext.createScriptProcessor(2048);
+                        recordNode.onaudioprocess = recorderProcess;
+                        input.connect(recordNode);
+                        recordNode.connect(audioContext.destination);
+                    }, function (e) {
+                        console.error("No live audio input: " + e);
+                    });
+
+                    function recorderProcess(e) {
+                        var buffer = e.inputBuffer.getChannelData(0);
+                        wsClient.send(buffer);
+                        console.log("sent some data");
+                    }
+                });
+
+            });
+
+
+
+        </script>
+
+
+    </body>
+</html>
