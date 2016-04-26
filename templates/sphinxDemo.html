@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang = 'en'>
     <body>
-
+      <center><h2>Sphinx Demo</h2></center>
+      <center>Please run <br>$ python webSockets.py<br> to start a websocket to recieve the incomming audio data </center>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-
-        <button id="speechMic">Click to Start</button>
-
+        <br><br>
+        <center><button id="speechMic">Click to Start speaking as long as you like.</button>
+        <button id = "stop"> Click to stop recording </button></center>
+        <center>the recorded data would be at data/recording.raw </center>
         <script>
             $(document).ready(function () {
                 console.log("Ready to go!!")
+                $("#stop").click(function(){
+                  location.reload();
+                })
                 $("#speechMic").click(function () {
                     window.AudioContext = window.AudioContext || window.webkitAudioContext;
                     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
                     aContext = window.AudioContext || window.webkitAudioContext;
                     var audioContext = new AudioContext();
                     var context = new aContext();
-                    console.log("ssssssssssssssssssssssssssssssssssss")
                     console.log(context.sampleRate);
                     var wsClient = new WebSocket("ws://localhost:9000");
 
