@@ -5,4 +5,8 @@ The project contains two main file - liveRecognition.py and app.py
 
 ***
 ## live Speech Recognition using sphinx
-sphinx is an open source speech recognition library written in Java and developed at Carnegie Mellon University. It uses hidden markov models for modelling speech. To run the demo, download the speech models from [English models](https://drive.google.com/folderview?id=0Bw00am7cLinWNWE4RnZuZkw5ODA&usp=sharing)
+sphinx is an open source speech recognition library written in Java and developed at Carnegie Mellon University. It uses hidden markov models for modelling speech. To run the demo, download the speech models from [English models](https://drive.google.com/folderview?id=0Bw00am7cLinWNWE4RnZuZkw5ODA&usp=sharing) and place the folder "pocketSphinx" and run the python script
+
+```
+$ python liveRecognition.py
+```
