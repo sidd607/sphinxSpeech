@@ -10,7 +10,7 @@ sphinx is an open source speech recognition library written in Java and develope
 ```
 $ python liveRecognition.py
 ```
-once the script starts running yoc now start talking into the mic as long as you want and sphinx will convert your speech to text in real time.
+once the script starts running you now start talking into the mic as long as you want and sphinx will convert your speech to text in real time.
 for more details regarding Sphinx its installation visit [Sphinx](http://cmusphinx.sourceforge.net/)
 ***
 ## Speech Recognition using webSpeech API
@@ -21,6 +21,8 @@ $ python app.py
 Once the server is up and running you can try it out at */webSpeech*
 
 ## Portal for live speech recognition from browser using CMU Sphinx
+*/sphinxDemo*
+
 I have tried to implement a portal like Google Now for speech recognition using HTML5 and CMU Sphinx at the backend. My approach was as follows.
 
 * First get the *getUserMedia()* of HTML working to access the mic and start recording sound.
